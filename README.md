@@ -1,7 +1,7 @@
 # lc909-bfs-with-dominance-proof
 Optimized BFS solution for LeetCode 909 (Snakes &amp; Ladders) with mathematical proof of edge reduction optimization
 
-# Intuition
+## Intuition
 We need the **minimum number of dice rolls** to reach the last square.  
 Because every roll costs exactly one move and always advances **1 – 6 squares**, the board forms an **unweighted directed graph** where each square has up to six outgoing edges.  
 Shortest path in an unweighted graph ⇒ **Breadth-First Search (BFS)**.
@@ -19,7 +19,7 @@ Heuristic summary
 
 ---
 
-# Approach
+## Approach
 1. **Flatten** the zig-zag board into a 1-based array `cells` so “square *k*” ≙ `cells[k]`.
 2. Start BFS with `queue = deque([(1, 0)])` and `visited = {1}`.
 3. **Early exit:** if `square ≥ target – 6`, one more roll reaches the goal.
@@ -32,7 +32,7 @@ Heuristic summary
 
 ---
 
-# Correctness Sketch
+## Correctness Sketch
 * Let window **W = {s+1,…,s+6}** for the current square *s*.  
   Denote  
   * **J** – jump squares in *W* (always enqueued),  
@@ -53,7 +53,7 @@ Therefore the algorithm explores a *dominating* subset of edges in true BFS orde
 
 ---
 
-# Complexity
+## Complexity
 Let `n = len(board)` (board is `n × n`, so `n²` squares).
 
 | Phase          | Time | Space |
@@ -63,7 +63,7 @@ Let `n = len(board)` (board is `n × n`, so `n²` squares).
 
 ---
 
-# Code
+## Code
 ```python
 from collections import deque
 from typing import List
